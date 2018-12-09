@@ -82,6 +82,7 @@ fun useWhen(str : String) = when (str) {
     }
 }
 
+
 fun main(args: Array<String>) {
     var s1 = "This is a pig"
     var a = 1
