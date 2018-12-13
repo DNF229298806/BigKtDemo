@@ -1,5 +1,9 @@
 package com.example.admin.bigkt
 
+import java.io.BufferedReader
+import java.io.StringReader
+import java.util.*
+
 
 fun getStringLength(obj: Any): Int? {
     if (obj is String && obj.length >= 0) {
@@ -51,7 +55,7 @@ fun shulie() {
  */
 fun collection() {
     //对集合进行迭代
-    val list = listOf("C", "C++","java", "kotlin", "python","JavaScript")
+    val list = listOf("C", "C++", "java", "kotlin", "python", "JavaScript")
     for (i in list) {
         println(i)
     }
@@ -69,12 +73,12 @@ fun collection() {
     //使用lambda 表达式来过滤(filter)和映射(map)集合
     list.filter { it.startsWith("p") }
         .sortedBy { it }
-        .map { it.toUpperCase()}
+        .map { it.toUpperCase() }
         .forEach(::println)
 }
 
-fun useWhen(str : String) = when (str) {
-    "666"-> {
+fun useWhen(str: String) = when (str) {
+    "666" -> {
         println(str)
     }
     else -> {
@@ -82,6 +86,43 @@ fun useWhen(str : String) = when (str) {
     }
 }
 
+fun usemap() {
+    val binaryReps = TreeMap<Char, String>()
+    for (c in 'A'..'F') {
+        val binary = Integer.toBinaryString(c.toInt())
+        binaryReps[c] = binary
+    }
+
+    for ((letter, binary) in binaryReps) {
+        println("$letter==$binary")
+    }
+}
+
+fun readNumber(reader: BufferedReader) {
+    val number = try {
+        Integer.parseInt(reader.readLine())
+    } catch (e: NumberFormatException) {
+        e.printStackTrace()
+        999999999999999999
+    }
+    println(number)
+}
+
+
+fun <T> joinToString(
+    collection: Collection<T>,
+    separator: String,
+    prefix: String,
+    postfix: String
+):String {
+    val result = StringBuilder(prefix)
+    for ((index, element) in collection.withIndex()) {
+        if (index>0) result.append(separator)
+        result.append(element)
+    }
+    result.append(postfix)
+    return result.toString()
+}
 
 fun main(args: Array<String>) {
     var s1 = "This is a pig"
@@ -94,4 +135,7 @@ fun main(args: Array<String>) {
     shulie()
     collection()
     useWhen("")
+    usemap()
+    val reader = BufferedReader(StringReader("asjdklaskljdajksld"))
+    readNumber(reader)
 }
