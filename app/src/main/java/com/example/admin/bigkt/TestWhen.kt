@@ -18,8 +18,12 @@ fun main(args: Array<String>) {
     val list = listOf("1", "2", "3", "4")
     println(joinToString(list))
     val testString = "Kotlin"
+    //Java
+    TestWhen.lastChar(testString)
+    //Kotlin
+    testString.lastChar()
     println(testString.lastChar())
 }
 
-fun String.lastChar(): Char = get(length-2)
+fun String.lastChar(): Char = get(length-1)
 
