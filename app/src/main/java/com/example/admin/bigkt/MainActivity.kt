@@ -47,7 +47,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        tv1.setOnClickListener { toast("点击点击") }
+        tv1.setOnClickListener { toast("点击点                                                                                                                                                                                                                        击") }
         bt.setOnClickListener {
             when (open) {
                 true -> {
