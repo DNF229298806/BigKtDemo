@@ -5,6 +5,10 @@ package com.example.admin.bigkt.testclass
  * @des 2018/12/8 15:36
  */
 class Rectangle(var height: Double, var length: Double) :
-    Shape(listOf(height, length, height, length)) {
+    Shape(listOf(height, length, height, length)), RectangleProperties {
+    override val isSquare: Boolean
+        get() = height == length
+
+
     override fun calculateArea(): Double = height * length
 }

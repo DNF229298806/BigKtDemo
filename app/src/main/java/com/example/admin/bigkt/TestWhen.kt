@@ -10,7 +10,7 @@ const val UNIX_LINE_SEPARAOR1 = "???"
 fun main(args: Array<String>) {
     for (i in 1..10) {
         when {
-            i % 2 == 0 || i%3==0-> println("i是偶数")
+            i % 2 == 0 || i % 3 == 0 -> println("i是偶数")
             i % 10 == 0 -> println("i被10整除")
         }
     }
@@ -25,5 +25,5 @@ fun main(args: Array<String>) {
     println(testString.lastChar())
 }
 
-fun String.lastChar(): Char = get(length-1)
+fun String.lastChar(): Char = get(length - 1)
 

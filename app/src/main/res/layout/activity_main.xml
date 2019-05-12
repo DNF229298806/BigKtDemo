@@ -45,6 +45,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="出现与消失"/>
+        <Button
+                android:id="@+id/sp_put"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="put"/>
+        <Button
+                android:id="@+id/sp_get"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="get"/>
     </LinearLayout>
 
 </LinearLayout>

@@ -5,8 +5,11 @@ import android.os.Build
 import android.os.Bundle
 import android.support.annotation.RequiresApi
 import android.support.v7.app.AppCompatActivity
+import android.util.Log
 import android.view.View
 import android.widget.Button
+import com.blankj.utilcode.util.SPUtils
+import com.blankj.utilcode.util.ToastUtils
 import org.jetbrains.anko.toast
 
 /**
@@ -14,6 +17,15 @@ import org.jetbrains.anko.toast
  */
 class MainActivity : AppCompatActivity() {
     var open = true
+    var count = 1
+    var size: Int = 2
+        set(value) {
+            Log.e("text", "count : ${count++}")
+            Log.e("text", "old_size:${size}")
+            size = if (value > 10) 15 else 0
+            Log.e("text", "new_size:${size}")
+            field = value
+        }
     private val bt: Button
         get() {
             val bt = findViewById<Button>(R.id.bt)
@@ -41,8 +53,9 @@ class MainActivity : AppCompatActivity() {
             return tv1
         }
 
-    @TargetApi(Build.VERSION_CODES.
-        LOLLIPOP)
+    @TargetApi(
+        Build.VERSION_CODES.LOLLIPOP
+    )
     @RequiresApi(Build.VERSION_CODES.JELLY_BEAN)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -58,12 +71,17 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
+
+        findViewById<Button>(R.id.sp_put).setOnClickListener { SPUtils.getInstance().put("alibaba", "一起来修复包！！！！！！")
+            size = 9
+        }
+        findViewById<Button>(R.id.sp_get).setOnClickListener { ToastUtils.showLong(SPUtils.getInstance().getString("alibaba")) }
     }
 
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     fun on(vararg views: View) {
         for (v in views) {
-           /* v.alpha = 0f*/
+            /* v.alpha = 0f*/
             v.visibility = View.VISIBLE
             v.animate()
                 /*.alpha(1f)*/
@@ -89,12 +107,12 @@ class MainActivity : AppCompatActivity() {
     @RequiresApi(Build.VERSION_CODES.JELLY_BEAN)
     fun off(vararg views: View) {
         for (v in views) {
-           /* v.alpha = 1f*/
+            /* v.alpha = 1f*/
             println("height start:" + v.height)
             println("translationY start:" + v.translationY)
             v.animate()
                 .setDuration(200)/*.alpha(0f)*/
-                .translationY((bt.top-v.top).toFloat())
+                .translationY((bt.top - v.top).toFloat())
                 .withEndAction {
                     println("height end:" + v.height)
                     println("translationY end:" + v.translationY)
