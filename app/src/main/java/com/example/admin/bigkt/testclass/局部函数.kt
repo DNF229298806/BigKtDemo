@@ -15,6 +15,13 @@ fun saveUser(user: User) {
     if (user.address.isEmpty()) {
         throw IllegalArgumentException("无法保存一个空的address")
     }
+
+    //普通java写法
+    saveUser1(user)
+    //kt局部函数
+    saveUser2(user)
+    //kt局部函数结合拓展函数
+    user.validateBeforeSave()
 }
 
 fun saveUser1(user: User) {
@@ -39,5 +46,15 @@ fun saveUser2(user: User) {
     }
     ktCheck(user.name, "name")
     ktCheck(user.address, "name")
+}
+
+fun User.validateBeforeSave() {
+    fun validate(value: String, fieldName: String) {
+        if (value.isEmpty()) {
+            throw java.lang.IllegalArgumentException("不能保存User，UserId为${id} ${fieldName}的值为空")
+        }
+    }
+    validate(name, "name")
+    validate(address, "address")
 }
 
