@@ -10,6 +10,7 @@ import android.view.View
 import android.widget.Button
 import com.blankj.utilcode.util.SPUtils
 import com.blankj.utilcode.util.ToastUtils
+import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.toast
 
 /**
@@ -26,32 +27,8 @@ class MainActivity : AppCompatActivity() {
             Log.e("text", "new_size:${size}")
             field = value
         }
-    private val bt: Button
-        get() {
-            val bt = findViewById<Button>(R.id.bt)
-            return bt
-        }
 
-    private val tv1: Button
-        get() {
-            val tv1 = findViewById<Button>(R.id.tv1)
-            return tv1
-        }
-    private val tv2: Button
-        get() {
-            val tv1 = findViewById<Button>(R.id.tv2)
-            return tv1
-        }
-    private val tv3: Button
-        get() {
-            val tv1 = findViewById<Button>(R.id.tv3)
-            return tv1
-        }
-    private val tv4: Button
-        get() {
-            val tv1 = findViewById<Button>(R.id.tv4)
-            return tv1
-        }
+
 
     @TargetApi(
         Build.VERSION_CODES.LOLLIPOP
